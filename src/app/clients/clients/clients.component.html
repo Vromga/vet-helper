@@ -1,0 +1,68 @@
+<mat-form-field>
+  <input (keyup)="applyFilter($event.target.value)" matInput placeholder="filter" type="text">
+</mat-form-field>
+<button mat-icon-button (click)="addClient()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div class="mat-elevation-z8 wrap">
+  <table [dataSource]="dataSource" mat-table matSort>
+    <ng-container matColumnDef="position">
+      <th *matHeaderCellDef mat-header-cell> No.</th>
+      <td *matCellDef="let element" mat-cell> {{element.position}} </td>
+    </ng-container>
+    <!--surname-->
+    <ng-container matColumnDef="surname">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Фамилия</th>
+      <td *matCellDef="let element" mat-cell> {{element.surname}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Имя</th>
+      <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Patronymic Column -->
+    <ng-container matColumnDef="patronymic">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Отчество</th>
+      <td *matCellDef="let element" mat-cell> {{element.patronymic}} </td>
+    </ng-container>
+
+    <!-- Pet Name Column -->
+    <ng-container matColumnDef="petName">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Кличка питомца</th>
+      <td *matCellDef="let element" mat-cell> {{element.petName}} </td>
+    </ng-container>
+
+    <!-- City Column -->
+    <ng-container matColumnDef="city">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Город</th>
+      <td *matCellDef="let element" mat-cell> {{element.city}} </td>
+    </ng-container>
+
+    <!-- address Column -->
+    <ng-container matColumnDef="address">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Адрес</th>
+      <td *matCellDef="let element" mat-cell> {{element.address}} </td>
+    </ng-container>
+
+    <!-- Balance Column -->
+    <ng-container matColumnDef="balance">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Баланс</th>
+      <td *matCellDef="let element" mat-cell> {{element.balance}} </td>
+    </ng-container>
+
+    <!-- LastInvoice Column -->
+    <ng-container matColumnDef="lastInvoice">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Последний визит</th>
+      <td *matCellDef="let element" mat-cell> {{element.lastInvoice}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr (click)="logging(row)" *matRowDef="let row; columns: displayedColumns;" class="hover" mat-row></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+

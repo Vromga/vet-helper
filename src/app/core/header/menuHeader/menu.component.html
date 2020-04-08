@@ -1,0 +1,26 @@
+<button [mat-menu-trigger-for]="menu" mat-button>Меню</button>
+<mat-menu #menu=matMenu>
+  <button [matMenuTriggerFor]="clients" mat-menu-item>Клиенты</button>
+  <button [matMenuTriggerFor]="money" mat-menu-item>Деньги</button>
+  <button [matMenuTriggerFor]="accounting" mat-menu-item>Учет</button>
+  <button [matMenuTriggerFor]="employees" mat-menu-item>Сотрудники</button>
+</mat-menu>
+
+<mat-menu #clients="matMenu">
+  <button mat-menu-item>Управление клиентами</button>
+  <button mat-menu-item>Прозвоны</button>
+  <button mat-menu-item>Телефония</button>
+</mat-menu>
+<mat-menu #money="matMenu">
+  <button mat-menu-item>Счета</button>
+  <button mat-menu-item>Кассы</button>
+  <button mat-menu-item>Зарплата</button>
+</mat-menu>
+<mat-menu #accounting="matMenu">
+  <button mat-menu-item>Товары и услуги</button>
+  <button mat-menu-item>Склад</button>
+</mat-menu>
+<mat-menu #employees="matMenu">
+  <button mat-menu-item>Календарь</button>
+  <button mat-menu-item>Управление сотрудниками</button>
+</mat-menu>

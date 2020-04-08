@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.create-clients {
+  width: 100%;
+}
+
+.create-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+
+  &__card {
+    max-width: 300px;
+  }
+}
+
+.mat-card-title{
+  color: blue;
+  font-size: 18px;
+  font-style: italic;
+}

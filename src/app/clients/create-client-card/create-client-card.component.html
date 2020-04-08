@@ -1,0 +1,77 @@
+<section class="create-clients">
+  <form action="/" class="create-form">
+    <mat-card class="create-form__card">
+      <mat-card-title>
+        Личная информация:
+      </mat-card-title>
+      <mat-form-field>
+        <mat-label>Фамилия</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Отчество</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Паспорт (№, серия)</mat-label>
+        <input matInput placeholder="AA 98 65 32" required>
+      </mat-form-field>
+    </mat-card>
+    <mat-card class="create-form__card">
+      <mat-card-title>Контактная информация:</mat-card-title>
+      <mat-form-field>
+        <mat-label class="caption">Мобильный телефон</mat-label>
+        <input matInput placeholder="+375 29 123 45 78" required type="tel">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label class="caption">Телефон (дом)</mat-label>
+        <input matInput type="tel">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label class="caption">Телефон (раб.)</mat-label>
+        <input matInput type="tel">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label class="caption">Электронная почта</mat-label>
+        <input matInput placeholder="example@gmail.com" type="email">
+      </mat-form-field>
+    </mat-card>
+    <mat-card class="create-form__card">
+      <mat-card-title>
+        Прочее:
+      </mat-card-title>
+      <mat-form-field>
+        <mat-label>Скидка %</mat-label>
+        <input matInput type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Номер по журналу</mat-label>
+        <input matInput type="text">
+        <mat-error>Hello</mat-error>
+      </mat-form-field>
+      <div class="wrap-field">
+      <mat-form-field>
+        <mat-label>Тип</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let types of this.typeHelp" [value]="types">
+            {{types}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-icon-button (click)="addMoreType()"><mat-icon>add</mat-icon></button>
+      </div>
+      <mat-form-field>
+        <mat-label>Как нашли</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let types of this.typeHelp" [value]="types.value">
+            {{types.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card>
+  </form>
+</section>

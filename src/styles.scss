@@ -1,33 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./assets/config/color_white";
-html{
+html {
   font-size: 10px;
   box-sizing: border-box;
 }
-*, *:after, *:before{
+
+*, *:after, *:before {
   box-sizing: inherit;
 }
 
-html,
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: $bg_body;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.neo_out {
-  border: 0;
-  border-radius: 10%;
-  background-color: $bg_body;
-  box-shadow: -6px -6px 12px 0 rgba(255, 255, 255, 0.83),
-              3px 3px 12px 0 rgba(0, 0, 0, .3);
-}
-
-.neo_in {
-  border: 1px solid rgba(255,255,255,.8);
-  border-radius: 10%;
-  background-color: $bg_body;
-  box-shadow: inset -6px -6px 12px 0 rgba(255, 255, 255, 0.83),
-  inset 3px 3px 12px 0 rgba(0, 0, 0, .3);
+.mat-tab-group.mat-tab-fill-height .mat-tab-body-wrapper{
+  flex: 1 1 100%;
 }
