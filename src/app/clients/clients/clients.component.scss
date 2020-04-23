@@ -10,7 +10,14 @@ mat-sidenav {
   width: 300px;
 }
 
-.hover:hover {
-  cursor: pointer;
-  background-color: #d2d2d2;
+.hover {
+  transition: all 0.1s linear;
+  &:nth-child(odd){
+    background-color: #fafafa;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #d6d6d6;
+  }
 }

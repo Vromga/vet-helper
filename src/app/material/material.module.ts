@@ -20,6 +20,10 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {MatCardModule} from "@angular/material/card";
 import {MatSelectModule} from "@angular/material/select";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -43,6 +47,10 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatCardModule,
   MatSelectModule,
+  MatAutocompleteModule,
+  MatTooltipModule,
+  MatListModule,
+  MatGridListModule,
   ScrollingModule
 ];
 

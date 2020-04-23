@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -8,12 +8,17 @@ import {Router} from "@angular/router";
 })
 export class MainComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
   goClients() {
-    this.router.navigate(['/clients'])
+    this.router.navigate(['/clients']);
+  }
+
+  goHospital() {
+    this.router.navigate(['/hospital']);
   }
 }

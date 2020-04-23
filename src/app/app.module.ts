@@ -13,6 +13,7 @@ import {ClientsModule} from "./clients/clients.module";
 import { MainComponent } from './core/main/main.component';
 import { FooterComponent } from './core/footer/footer.component';
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -32,7 +33,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     MaterialModule,
     ClientsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

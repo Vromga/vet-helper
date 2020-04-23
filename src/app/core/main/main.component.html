@@ -1,7 +1,7 @@
 <nav class="main-button">
   <div class="main-button__wrap">
     <button class="main-button__btn" mat-raised-button (click)="goClients()">Клиенты</button>
-    <button class="main-button__btn" mat-raised-button>Станционар</button>
+    <button class="main-button__btn" mat-raised-button (click)="goHospital()">Станционар</button>
     <button class="main-button__btn" mat-raised-button>Звонки</button>
   </div>
   <div class="main-button__wrap">
@@ -12,4 +12,6 @@
     <button class="main-button__btn" mat-raised-button>Медкарты</button>
   </div>
 </nav>
+<main class="main">
 <router-outlet></router-outlet>
+</main>
