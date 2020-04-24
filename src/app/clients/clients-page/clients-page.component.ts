@@ -3,6 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
 import { IClients } from '../interface/clients';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ClientSendMailComponent } from '../client-send-mail/client-send-mail.component';
 
 @Component({
   selector: 'app-clients-page',
@@ -16,7 +18,8 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              public clientService: ClientService) {
+              public clientService: ClientService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -24,7 +27,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
       this.route.params.subscribe((params: Params) => {
         this.client = clients.find((client: IClients) => client._id === params.id);
 
-        if (this.client.clientInBlackList.toString() === 'true'){
+        if (this.client.clientInBlackList.toString() === 'true') {
           this.clientInBlackList = true;
         }
       });
@@ -37,5 +40,20 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  sendMail() {
+    let dialogRef = this.dialog.open(ClientSendMailComponent,
+      {
+        data: {
+          name: this.client.name,
+          surname: this.client.surname,
+          patronymic: this.client.patronymic,
+          email: this.client.email
+        }
+      });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+    });
   }
 }

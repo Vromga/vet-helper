@@ -3,22 +3,22 @@
     <nav class="client__btn-group">
       <ul class="client__list">
         <li class="client__element">
-          <button (click)="backForClients()" class="client__btn" mat-icon-button>
+          <button (click)="backForClients()" class="client__btn" mat-icon-button color="primary">
             <mat-icon>undo</mat-icon>
           </button>
         </li>
         <li class="client__element">
-          <button class="client__btn" mat-icon-button>
+          <button class="client__btn" mat-icon-button color="primary">
             <mat-icon>edit</mat-icon>
           </button>
         </li>
         <li class="client__element">
-          <button class="client__btn" mat-icon-button>
+          <button class="client__btn" *ngIf="this.client?.email" mat-icon-button color="primary" (click)="sendMail()">
             <mat-icon>mail</mat-icon>
           </button>
         </li>
         <li class="client__element">
-          <button class="client__btn" mat-icon-button>
+          <button class="client__btn" mat-icon-button color="primary">
             <mat-icon>event_note</mat-icon>
           </button>
         </li>
@@ -26,4 +26,12 @@
     </nav>
   </header>
   <app-client-card [client]="this.client" [blackList]="this.clientInBlackList"></app-client-card>
+  <article class="client__description">
+    <mat-form-field appearance="fill" class="client__textarea">
+    <mat-label>Дополнительная информация:</mat-label>
+    <textarea matInput placeholder="Дополнительная информация">{{this.client?.clientDescription}}</textarea>
+  </mat-form-field>
+    <button mat-icon-button color="primary">
+      <mat-icon>save</mat-icon></button>
+  </article>
 </section>

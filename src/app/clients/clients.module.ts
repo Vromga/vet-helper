@@ -9,12 +9,14 @@ import { CreateClientCardComponent } from './create-client-card/create-client-ca
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientsPageComponent } from './clients-page/clients-page.component';
 import { ClientCardComponent } from './client-card/client-card.component';
+import { ClientSendMailComponent } from './client-send-mail/client-send-mail.component';
 
 @NgModule({
-  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent],
+  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent, ClientSendMailComponent],
   exports: [
     ClientsComponent
   ],
+  entryComponents: [ClientSendMailComponent],
   imports: [
     CommonModule,
     ClientsRoutingModule,
