@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {CreateClientCardComponent} from "./clients/create-client-card/create-client-card.component";
-import {ClientsComponent} from "./clients/clients/clients.component";
-import {ClientsPageComponent} from "./clients/clients-page/clients-page.component";
+import {CreateClientCardComponent} from './clients/create-client-card/create-client-card.component';
+import {ClientsComponent} from './clients/clients/clients.component';
+import {ClientsPageComponent} from './clients/clients-page/clients-page.component';
 import { HospitalForInPatientsComponent } from './hospital/hospital-for-in-patients/hospital-for-in-patients.component';
 
 

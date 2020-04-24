@@ -1,0 +1,22 @@
+<article class="card">
+  <div [ngClass]="{red: this.blackList, green: !this.blackList}" class="card__wrap">
+    <p class="card__fio">{{this.client?.surname}} {{this.client?.name}} {{this.client?.patronymic}}</p>
+    <hr [ngClass]="{red: this.blackList, green: !this.blackList}" class="card__hr">
+    <p class="card__wrap-phone"><a *ngIf="this.client?.mobilePhone" class="card__phone"
+                                   href="tel:{{this.client?.mobilePhone}}">Мобильный: {{this.client?.mobilePhone}}</a>
+    </p>
+    <p class="card__wrap-phone"><a *ngIf="this.client?.homePhone" class="card__phone"
+                                   href="tel:{{this.client?.homePhone}}">Домашний: {{this.client?.homePhone}}</a></p>
+    <p class="card__wrap-phone"><a *ngIf="this.client?.workPhone" class="card__phone"
+                                   href="tel:{{this.client?.workPhone}}">Рабочий: {{this.client?.workPhone}}</a></p>
+    <p class="card__home-address">
+      {{this.client?.typeCity | abbrCityAndStreet}}
+      {{this.client?.cityName}}
+      {{this.client?.typeStreet | abbrCityAndStreet}}
+      {{this.client?.streetName}}
+      {{this.client?.numberHouse}}
+    </p>
+    <p class="card__zip">Индекс: {{this.client?.zipCode}}</p>
+
+  </div>
+</article>

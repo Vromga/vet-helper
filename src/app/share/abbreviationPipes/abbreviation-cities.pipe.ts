@@ -24,7 +24,7 @@ export class AbbrCityAndStreetPipe implements PipeTransform {
       return 'наб.';
     } else if (value === 'Площадь') {
       return 'пл.';
-    } else return value;
+    } else { return value; }
   }
 
 }

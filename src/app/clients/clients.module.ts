@@ -8,9 +8,10 @@ import { MaterialModule } from '../material/material.module';
 import { CreateClientCardComponent } from './create-client-card/create-client-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientsPageComponent } from './clients-page/clients-page.component';
+import { ClientCardComponent } from './client-card/client-card.component';
 
 @NgModule({
-  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent],
+  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent],
   exports: [
     ClientsComponent
   ],

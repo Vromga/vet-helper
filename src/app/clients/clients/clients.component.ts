@@ -17,7 +17,7 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy {
   dataSource: MatTableDataSource<IClients> = new MatTableDataSource();
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  loading: boolean = true;
+  loading = true;
   clientSubscribe: Subscription;
 
   constructor(private router: Router,

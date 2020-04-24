@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public mess: number = 0;
-  opened: boolean = false;
+  public mess = 0;
+  opened = false;
   constructor() { }
 
   ngOnInit(): void {

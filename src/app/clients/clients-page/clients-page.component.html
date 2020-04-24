@@ -1,18 +1,29 @@
 <section class="client">
-  <nav class="client__btn-group">
-    <ul class="client__list">
-      <li class="client__element">
-        <button mat-icon-button class="client__btn" (click)="backForClients()"><mat-icon>undo</mat-icon></button>
-      </li>
-      <li class="client__element">
-        <button mat-icon-button class="client__btn"><mat-icon>edit</mat-icon></button>
-      </li>
-      <li class="client__element">
-        <button mat-icon-button class="client__btn"><mat-icon>mail</mat-icon></button>
-      </li>
-      <li class="client__element">
-        <button mat-icon-button class="client__btn"><mat-icon>event_note</mat-icon></button>
-      </li>
-    </ul>
-  </nav>
+  <header class="client__header">
+    <nav class="client__btn-group">
+      <ul class="client__list">
+        <li class="client__element">
+          <button (click)="backForClients()" class="client__btn" mat-icon-button>
+            <mat-icon>undo</mat-icon>
+          </button>
+        </li>
+        <li class="client__element">
+          <button class="client__btn" mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </li>
+        <li class="client__element">
+          <button class="client__btn" mat-icon-button>
+            <mat-icon>mail</mat-icon>
+          </button>
+        </li>
+        <li class="client__element">
+          <button class="client__btn" mat-icon-button>
+            <mat-icon>event_note</mat-icon>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <app-client-card [client]="this.client" [blackList]="this.clientInBlackList"></app-client-card>
 </section>

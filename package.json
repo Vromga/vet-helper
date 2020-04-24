@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "startServer": "node ./mongoDB_NodeJS/index.js",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --fix",
     "e2e": "ng e2e"
   },
   "private": true,

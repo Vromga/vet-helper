@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class ClientsPageComponent implements OnInit, OnDestroy {
   public client: IClients;
+  public clientInBlackList = false;
   private subscriptions: Subscription;
 
   constructor(private route: ActivatedRoute,
@@ -21,12 +22,13 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptions = this.clientService.getAllClients().subscribe((clients: IClients[]) => {
       this.route.params.subscribe((params: Params) => {
-        console.log(clients);
         this.client = clients.find((client: IClients) => client._id === params.id);
-        console.log(this.client);
+
+        if (this.client.clientInBlackList.toString() === 'true'){
+          this.clientInBlackList = true;
+        }
       });
     });
-
   }
 
   backForClients() {

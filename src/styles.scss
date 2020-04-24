@@ -17,6 +17,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mat-tab-group.mat-tab-fill-height .mat-tab-body-wrapper{
-  flex: 1 1 100%;
+.red{
+  background-color: rgba(255, 0, 0, 0.05);
+  border: 1px solid rgba(255, 0, 0, 0.5)
+}
+
+.green{
+  background-color: rgba(0, 255, 0, 0.05);
+  border: 1px solid rgba(0, 255, 0, 0.5)
 }

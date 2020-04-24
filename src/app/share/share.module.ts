@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ShareRoutingModule } from './share-routing.module';
 import { FilterComponent } from './filter/filter.component';
-import {MaterialModule} from "../material/material.module";
-import {MatSelectModule} from "@angular/material/select";
+import { MaterialModule } from '../material/material.module';
 import { AbbrCityAndStreetPipe } from './abbreviationPipes/abbreviation-cities.pipe';
 
 @NgModule({
@@ -16,8 +15,8 @@ import { AbbrCityAndStreetPipe } from './abbreviationPipes/abbreviation-cities.p
   imports: [
     CommonModule,
     ShareRoutingModule,
-    MaterialModule,
-    MatSelectModule
+    MaterialModule
   ]
 })
-export class ShareModule { }
+export class ShareModule {
+}

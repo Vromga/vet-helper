@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Router} from "@angular/router";
-import {FormControl, FormGroup} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ClientService } from '../services/client.service';
 
 
@@ -13,10 +13,11 @@ import { ClientService } from '../services/client.service';
 export class CreateClientCardComponent implements OnInit {
   public typeHelp: Array<string> = ['Временный', 'Вызова', 'Клиника', 'Постоянный', 'Случайный'];
   public listHowToFindClinic: Array<string> = ['Заводчик', 'Интернет', 'Обслуживались ранее', 'От знакомых', 'Рекламная вывеска'];
-  selectedCity: string = 'Город';
-  selectedStreet: string = 'Улица';
+  selectedCity = 'Город';
+  selectedStreet = 'Улица';
   filteredCities: Observable<string>;
   form: FormGroup;
+
   constructor(private router: Router,
               private clientService: ClientService) {
   }
@@ -44,11 +45,11 @@ export class CreateClientCardComponent implements OnInit {
       numberHouse: new FormControl(''),
       zipCode: new FormControl(''),
       clientDescription: new FormControl('')
-    })
+    });
   }
 
   addMoreType() {
-    console.log('hello world')
+    console.log('hello world');
   }
 
   addMoreHowToFindClinic() {
