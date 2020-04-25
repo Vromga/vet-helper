@@ -52,8 +52,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
           email: this.client.email
         }
       });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
+    dialogRef.afterClosed().subscribe(() => {
+    }).unsubscribe();
   }
 }

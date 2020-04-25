@@ -16,10 +16,10 @@ export class ClientSendMailComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       title: new FormControl(),
-      bodyMail: new FormControl()
+      bodyMail: new FormControl(`Уважаемый ${this.client?.surname} ${this.client?.name} ${this.client?.patronymic}!`)
     })
   }
-
+  // TODO Организовать отправку письма в NodeJS.
   sendMail() {
     console.log(this.form.value, this.client.email);
   }

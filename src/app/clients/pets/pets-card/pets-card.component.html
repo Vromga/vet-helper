@@ -1,0 +1,4 @@
+<section class="pets">
+  <article class="pets__card" *ngIf="pets.length; else noPets"></article>
+</section>
+<ng-template #noPets><span >Не зарегистрированно ниодного животного! </span></ng-template>
