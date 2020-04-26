@@ -16,7 +16,9 @@ export class ClientPetsComponent implements OnInit {
 
   createPetCard() {
     this.route.params.subscribe(params => {
-      this.router.navigate([`clients/${params.id}`,'create-pets']);
-    }).unsubscribe();
+      this.router.navigate([`clients/${params.id}`, 'create-pets'], {queryParams: {
+        id: params.id
+        }});
+    });
   }
 }

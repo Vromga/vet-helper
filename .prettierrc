@@ -7,10 +7,12 @@
   "proseWrap": "always",
   "printWidth": 110,
   "singleQuote": true,
-
   "overrides": [
     {
-      "files": ["*.js", "*.ts"],
+      "files": [
+        "*.js",
+        "*.ts"
+      ],
       "options": {
         "arrowParens": "always"
       }

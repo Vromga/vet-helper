@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-pets-card',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-pets-card.component.scss']
 })
 export class CreatePetsCardComponent implements OnInit {
-
-  constructor() { }
+  private id: string;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => this.id = params.id);
   }
 
+  chancelCreatePet() {
+    this.route.params.subscribe(params => {
+      this.router.navigate([`clients/${this.id}`]);
+    });
+  }
 }
