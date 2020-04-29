@@ -1,62 +1,58 @@
-<!--&lt;!&ndash;TODO add data in db&ndash;&gt;-->
-<!--<form action="" class="create">-->
-<!--  <button mat-icon-button style="color: green;">-->
-<!--    <mat-icon>save</mat-icon>-->
-<!--  </button>-->
-<!--  <button mat-icon-button color="warn" (click)="chancelCreatePet()">-->
-<!--    <mat-icon>cancel</mat-icon>-->
-<!--  </button>-->
-<!--  <mat-form-field>-->
-<!--    <mat-label>Кличка питомца</mat-label>-->
-<!--    <input type="text" matInput>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field appearance="legacy">-->
-<!--    <input [matAutocomplete]="auto" matInput placeholder="Вид" type="text" formControlName="cityName">-->
-<!--    <mat-autocomplete #auto="matAutocomplete">-->
-<!--      <mat-option value="Собаки">Собаки</mat-option>-->
-<!--      <mat-option value="Кошки">Кошки</mat-option>-->
-<!--      <mat-option value="Птицы">Птицы</mat-option>-->
-<!--      <mat-option value="Рептилии">Рептилии</mat-option>-->
-<!--      <mat-option value="Грызуны">Грызуны</mat-option>-->
-<!--      <mat-option value="Сельскохозяйственные">Сельскохозяйственные</mat-option>-->
-<!--    </mat-autocomplete>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field appearance="legacy">-->
-<!--    <input [matAutocomplete]="auto" matInput placeholder="Пол" type="text" formControlName="cityName">-->
-<!--    <mat-autocomplete #auto="matAutocomplete">-->
-<!--      <mat-option value="Мужской">Мужской</mat-option>-->
-<!--      <mat-option value="Женский">Женский</mat-option>-->
-<!--      <mat-option value="Кастрированный">Кастрированный</mat-option>-->
-<!--      <mat-option value="Стерелизованный">Стерелизованный</mat-option>-->
-<!--      <mat-option value="Не известно">Не известно</mat-option>-->
-<!--    </mat-autocomplete>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field>-->
-<!--    <mat-label>Порода</mat-label>-->
-<!--    <input type="text" matInput>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field>-->
-<!--    <mat-label>Окрас</mat-label>-->
-<!--    <input type="text" matInput>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field>-->
-<!--    <mat-label>Вес</mat-label>-->
-<!--    <input type="text" matInput>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field>-->
-<!--    <mat-label>Дата рождения</mat-label>-->
-<!--    <input type="text" matInput>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field>-->
-<!--    <mat-label>№ чипа</mat-label>-->
-<!--    <input type="text" matInput>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field>-->
-<!--    <mat-label>Примечание</mat-label>-->
-<!--    <textarea type="text" matInput></textarea>-->
-<!--  </mat-form-field>-->
-<!--</form>-->
-<h1>I work</h1>
-  <button mat-icon-button color="warn" (click)="chancelCreatePet()">
+<!--TODO add data in db-->
+<form class="create" (ngSubmit)="save()" [formGroup]="form">
+  <button mat-icon-button style="color: green;" type="submit">
+    <mat-icon>save</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="chancelCreatePet()" type="button">
     <mat-icon>cancel</mat-icon>
   </button>
+  <mat-form-field>
+    <mat-label>Кличка питомца</mat-label>
+    <input formControlName="name" type="text" matInput>
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <input formControlName="kindOfAnimal" [matAutocomplete]="auto" matInput placeholder="Вид" type="text">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option value="Собаки">Собаки</mat-option>
+      <mat-option value="Кошки">Кошки</mat-option>
+      <mat-option value="Птицы">Птицы</mat-option>
+      <mat-option value="Рептилии">Рептилии</mat-option>
+      <mat-option value="Грызуны">Грызуны</mat-option>
+      <mat-option value="Сельскохозяйственные">Сельскохозяйственные</mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field appearance="legacy">
+    <input [matAutocomplete]="auto" matInput placeholder="Пол" type="text" formControlName="sex">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option value="Мужской">Мужской</mat-option>
+      <mat-option value="Женский">Женский</mat-option>
+      <mat-option value="Кастрированный">Кастрированный</mat-option>
+      <mat-option value="Стерелизованный">Стерелизованный</mat-option>
+      <mat-option value="Не известно">Не известно</mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Порода</mat-label>
+    <input type="text" matInput formControlName="breed">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Окрас</mat-label>
+    <input type="text" matInput formControlName="color">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Вес</mat-label>
+    <input type="text" matInput formControlName="weightAnimal">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Дата рождения</mat-label>
+    <input type="text" matInput formControlName="age">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>№ чипа</mat-label>
+    <input type="text" matInput formControlName="chipNumber">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Примечание</mat-label>
+    <textarea type="text" matInput formControlName="description"></textarea>
+  </mat-form-field>
+</form>

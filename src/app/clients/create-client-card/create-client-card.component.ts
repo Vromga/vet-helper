@@ -13,10 +13,10 @@ import { ClientService } from '../services/client.service';
 export class CreateClientCardComponent implements OnInit {
   public typeHelp: Array<string> = ['Временный', 'Вызова', 'Клиника', 'Постоянный', 'Случайный'];
   public listHowToFindClinic: Array<string> = ['Заводчик', 'Интернет', 'Обслуживались ранее', 'От знакомых', 'Рекламная вывеска'];
-  selectedCity = 'Город';
-  selectedStreet = 'Улица';
-  filteredCities: Observable<string>;
-  form: FormGroup;
+  public selectedCity = 'Город';
+  public selectedStreet = 'Улица';
+  public filteredCities: Observable<string>;
+  public form: FormGroup;
 
   constructor(private router: Router,
               private clientService: ClientService) {
@@ -36,8 +36,8 @@ export class CreateClientCardComponent implements OnInit {
       numberInDocument: new FormControl(''),
       typeOrReception: new FormControl(''),
       howToFindClinic: new FormControl(''),
-      unsubscribe: new FormControl(''),
-      clientInBlackList: new FormControl(''),
+      unsubscribe: new FormControl(false),
+      clientInBlackList: new FormControl(false),
       typeCity: new FormControl('Город'),
       cityName: new FormControl('Минск'),
       typeStreet: new FormControl('Улица'),
@@ -48,6 +48,7 @@ export class CreateClientCardComponent implements OnInit {
     });
   }
 
+// TODO create method add in db
   addMoreType() {
     console.log('hello world');
   }
