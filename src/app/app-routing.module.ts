@@ -6,6 +6,7 @@ import { ClientsPageComponent } from './clients/clients-page/clients-page.compon
 import { HospitalForInPatientsComponent } from './hospital/hospital-for-in-patients/hospital-for-in-patients.component';
 import { PetsCardComponent } from './clients/pets/pets-card/pets-card.component';
 import { CreatePetsCardComponent } from './clients/pets/create-pets-card/create-pets-card.component';
+import { PetMedicalCardComponent } from './clients/pets/pet-medical-card/pet-medical-card.component';
 
 
 const routes: Routes = [
@@ -13,8 +14,10 @@ const routes: Routes = [
   { path: 'clients', component: ClientsComponent },
   {
     path: 'clients/:id', component: ClientsPageComponent, children: [
-      { path: '', component: PetsCardComponent },
-      {path: 'create-pets', component: CreatePetsCardComponent },
+      { path: '', redirectTo: 'pets', pathMatch: 'full' },
+      { path: 'pets', component: PetsCardComponent },
+      { path: 'pets/:idx', component: PetMedicalCardComponent },
+      { path: 'create-pets', component: CreatePetsCardComponent }
     ]
   },
   { path: 'create-client', component: CreateClientCardComponent },

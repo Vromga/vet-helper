@@ -13,9 +13,10 @@ import { ClientSendMailComponent } from './client-send-mail/client-send-mail.com
 import { ClientPetsComponent } from './pets/client-pets/client-pets.component';
 import { PetsCardComponent } from './pets/pets-card/pets-card.component';
 import { CreatePetsCardComponent } from './pets/create-pets-card/create-pets-card.component';
+import { PetMedicalCardComponent } from './pets/pet-medical-card/pet-medical-card.component';
 
 @NgModule({
-  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent, ClientSendMailComponent, ClientPetsComponent, PetsCardComponent, CreatePetsCardComponent],
+  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent, ClientSendMailComponent, ClientPetsComponent, PetsCardComponent, CreatePetsCardComponent, PetMedicalCardComponent],
   exports: [
     ClientsComponent
   ],

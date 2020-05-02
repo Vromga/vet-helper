@@ -9,4 +9,5 @@ export interface IPetInterface {
   sex: string;
   weightAnimal: number;
   description: string;
+  _id?: string;
 }

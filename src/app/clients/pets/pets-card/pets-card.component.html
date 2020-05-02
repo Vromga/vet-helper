@@ -1,5 +1,5 @@
 <section class="pets" *ngIf="pets?.length; else noPets">
-  <article class="pets__card" *ngFor="let pet of this.pets">
+  <article class="pets__card" *ngFor="let pet of this.pets" (click)="openCard(this.pet._id)">
       <p>{{pet.name}}</p>
   </article>
 </section>

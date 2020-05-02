@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PetService } from '../../services/pet.service';
+import { ClientSaveIdService } from '../../services/client-save-id.service';
 
 @Component({
   selector: 'app-create-pets-card',
@@ -9,19 +10,17 @@ import { PetService } from '../../services/pet.service';
   styleUrls: ['./create-pets-card.component.scss']
 })
 export class CreatePetsCardComponent implements OnInit {
-  private id: string;
   public form: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private petService: PetService
+    private petService: PetService,
+    public clientSaveId: ClientSaveIdService
   ) {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => this.id = params.id).unsubscribe();
-
     this.form = new FormGroup({
       name: new FormControl(''),
       age: new FormControl(''),
@@ -36,14 +35,13 @@ export class CreatePetsCardComponent implements OnInit {
   }
 
   chancelCreatePet() {
-    this.route.params.subscribe(params => {
-      this.router.navigate([`clients/${this.id}`]);
-    }).unsubscribe();
+    console.log(this.clientSaveId.clientId);
+    this.router.navigate([`clients/${this.clientSaveId.clientId}`]);
   }
 
   save() {
     const reqBody = this.form.value;
-    reqBody.clientId = this.id;
+    reqBody.clientId = this.clientSaveId.clientId;
     this.petService.addPet(reqBody);
     this.chancelCreatePet();
   }

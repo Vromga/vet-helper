@@ -5,6 +5,7 @@ import { IClients } from '../interface/clients';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientSendMailComponent } from '../client-send-mail/client-send-mail.component';
+import { ClientSaveIdService } from '../services/client-save-id.service';
 
 @Component({
   selector: 'app-clients-page',
@@ -26,7 +27,6 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
     this.subscriptions = this.clientService.getAllClients().subscribe((clients: IClients[]) => {
       this.route.params.subscribe((params: Params) => {
         this.client = clients.find((client: IClients) => client._id === params.id);
-
         if (this.client.clientInBlackList.toString() === 'true') {
           this.clientInBlackList = true;
         }
@@ -43,7 +43,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
   }
 
   sendMail() {
-    let dialogRef = this.dialog.open(ClientSendMailComponent,
+    const dialogRef = this.dialog.open(ClientSendMailComponent,
       {
         data: {
           name: this.client.name,
