@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
 import { IClients } from '../interface/clients';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientSendMailComponent } from '../client-send-mail/client-send-mail.component';
+import { debounceTime, map } from 'rxjs/operators';
 import { ClientSaveIdService } from '../services/client-save-id.service';
 
 @Component({
@@ -15,11 +16,14 @@ import { ClientSaveIdService } from '../services/client-save-id.service';
 export class ClientsPageComponent implements OnInit, OnDestroy {
   public client: IClients;
   public clientInBlackList = false;
+  @ViewChild('description', { static: true }) public description: ElementRef;
   private subscriptions: Subscription;
+  // private subscriptionsEvent: Subscription;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               public clientService: ClientService,
+              private clientSaveIdService: ClientSaveIdService,
               public dialog: MatDialog) {
   }
 
@@ -32,6 +36,15 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
         }
       });
     });
+
+    // this.subscriptionsEvent = fromEvent(this.description.nativeElement, 'keyup')
+    //   .pipe(
+    //     debounceTime(1000),
+    //     map((event: KeyboardEvent) => event.target)
+    //   )
+    //   .subscribe((value: HTMLInputElement) => {
+    //     this.clientService.patch(this.clientSaveIdService.clientId, value.value);
+    //   });
   }
 
   backForClients() {
@@ -40,6 +53,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+    // this.subscriptionsEvent.unsubscribe();
   }
 
   sendMail() {

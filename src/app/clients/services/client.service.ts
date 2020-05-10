@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IClients } from '../interface/clients';
 import { Observable } from 'rxjs';
 
@@ -23,4 +23,14 @@ export class ClientService {
       }).unsubscribe();
   }
 
+  patch(id, req) {
+    this.http.patch(`http://localhost:8000/users/${id}`, {clientDescription: req})
+      .subscribe(() => console.log('update patch: ', req));
+  }
+
+
+  // put(id, req) {
+  //   this.put(`http://localhost:8000/users/${id}`, req)
+  //     .subscribe(() => console.log('update patch: ', req));
+  // }
 }
