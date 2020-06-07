@@ -1,10 +1,10 @@
-.pets{
+.pets {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
 
-  &__card{
+  &__card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,4 +14,12 @@
     cursor: pointer;
     margin: 5px;
   }
+}
+
+.mat-list-item.mat-focus-indicator {
+  height: 30px;
+}
+
+.mat-card-title{
+  text-align: center;
 }

@@ -26,12 +26,12 @@
     </nav>
   </header>
   <app-client-card [blackList]="this.clientInBlackList" [client]="this.client"></app-client-card>
-<!--  <article class="client__description">-->
-<!--    <mat-form-field appearance="fill" class="client__textarea">-->
-<!--      <mat-label>Дополнительная информация:</mat-label>-->
-<!--      <textarea #description matInput placeholder="Дополнительная информация">{{this.client?.clientDescription}}</textarea>-->
-<!--    </mat-form-field>-->
-<!--  </article>-->
+  <article class="client__description">
+    <mat-form-field appearance="fill" class="client__textarea">
+      <mat-label>Дополнительная информация:</mat-label>
+      <textarea #description matInput placeholder="Дополнительная информация">{{this.client?.clientDescription}}</textarea>
+    </mat-form-field>
+  </article>
 </section>
 <section class="pets">
   <app-client-pets></app-client-pets>

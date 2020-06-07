@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "vethelper"
+  "defaultProject": "vethelper",
+  "cli": {
+    "analytics": "2423e3ca-44c7-4c0b-9f11-7f7781b045f8"
+  }
 }

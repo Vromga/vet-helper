@@ -33,7 +33,6 @@ export class DateOfBornService {
         timeFormat.minutesInHour *
         timeFormat.dayInYear *
         timeFormat.millisecondsInSecond);
-    console.log(age);
     return Math.floor(age).toString();
   }
 }

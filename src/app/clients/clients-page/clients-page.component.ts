@@ -18,7 +18,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
   public clientInBlackList = false;
   @ViewChild('description', { static: true }) public description: ElementRef;
   private subscriptions: Subscription;
-  // private subscriptionsEvent: Subscription;
+  private subscriptionsEvent: Subscription;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -37,14 +37,14 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
       });
     });
 
-    // this.subscriptionsEvent = fromEvent(this.description.nativeElement, 'keyup')
-    //   .pipe(
-    //     debounceTime(1000),
-    //     map((event: KeyboardEvent) => event.target)
-    //   )
-    //   .subscribe((value: HTMLInputElement) => {
-    //     this.clientService.patch(this.clientSaveIdService.clientId, value.value);
-    //   });
+    this.subscriptionsEvent = fromEvent(this.description.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(1000),
+        map((event: KeyboardEvent) => event.target)
+      )
+      .subscribe((value: HTMLInputElement) => {
+        this.clientService.patch(this.clientSaveIdService.clientId, value.value);
+      });
   }
 
   backForClients() {
@@ -53,7 +53,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-    // this.subscriptionsEvent.unsubscribe();
+    this.subscriptionsEvent.unsubscribe();
   }
 
   sendMail() {
