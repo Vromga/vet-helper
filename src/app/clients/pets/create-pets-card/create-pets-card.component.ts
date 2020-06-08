@@ -5,6 +5,7 @@ import { ClientSaveIdService } from '../../services/client-save-id.service';
 import { Observable } from 'rxjs';
 import { filter, map, startWith } from 'rxjs/operators';
 import { AutocompletePetService } from '../pet.services/autocompletePet/autocomplete-pet.service';
+import { PetService } from '../../services/pet.service';
 
 
 interface IForm {
@@ -40,7 +41,8 @@ export class CreatePetsCardComponent implements OnInit, AfterViewChecked {
     private route: ActivatedRoute,
     private router: Router,
     public clientSaveId: ClientSaveIdService,
-    public ac: AutocompletePetService
+    public ac: AutocompletePetService,
+    private petService: PetService
   ) {
   }
 
@@ -117,11 +119,10 @@ export class CreatePetsCardComponent implements OnInit, AfterViewChecked {
 
   public save(): void {
     const reqBody = this.form.value;
-    // reqBody.clientId = this.clientSaveId.clientId;
-    // this.petService.addPet(reqBody);
-    // this.chancelCreatePet();
+    reqBody.clientId = this.clientSaveId.clientId;
+    this.petService.addPet(reqBody);
+    this.chancelCreatePet();
   }
-
-
 }
+
 

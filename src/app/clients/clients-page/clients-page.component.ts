@@ -69,4 +69,8 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(() => {
     }).unsubscribe();
   }
+
+  createPetCard() {
+    this.router.navigate([`clients/${this.clientSaveIdService.clientId}`, 'create-pets']);
+  }
 }

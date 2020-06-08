@@ -1,5 +1,5 @@
 <!--TODO add data in db-->
-<form class="create" (ngSubmit)="save()" [formGroup]="form">
+<form class="create" (ngSubmit)="save()" [formGroup]="form" class="wrap">
   <div class="wrap">
     <button mat-icon-button style="color: green;" type="submit" matTooltip="Сохранить питомца">
       <mat-icon>save</mat-icon>
@@ -9,52 +9,72 @@
       <mat-icon>cancel</mat-icon>
     </button>
   </div>
-  <mat-form-field>
-    <mat-label>Кличка питомца</mat-label>
-    <input formControlName="name" type="text" matInput>
-  </mat-form-field>
-  <mat-form-field appearance="legacy">
-    <input formControlName="kindOfAnimal"
-           [matAutocomplete]="kindOfAnimal"
-           matInput
-           placeholder="Вид"
-           type="text">
-    <mat-autocomplete #kindOfAnimal="matAutocomplete">
-      <mat-option *ngFor="let kind of filteredKindOfAnimal | async" [value]="kind">{{kind}}</mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  <mat-form-field appearance="legacy">
-    <input [matAutocomplete]="gender" matInput placeholder="Пол" type="text" formControlName="gender">
-    <mat-autocomplete #gender="matAutocomplete">
-      <mat-option *ngFor="let gender of filterGender | async" [value]="gender">{{gender}}</mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  <mat-form-field>
-    <input [matAutocomplete]="breedsAnimals" placeholder="Порода" type="text" matInput formControlName="breed">
-    <mat-autocomplete #breedsAnimals="matAutocomplete">
-      <mat-option *ngFor="let breed of filterBreeds | async" [value]="breed">{{breed}}</mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Окрас</mat-label>
-    <input [matAutocomplete]="colorAnimal" type="text" matInput formControlName="color">
-    <mat-autocomplete #colorAnimal="matAutocomplete">
-      <mat-option *ngFor="let color of filterColor | async" [value]="color">{{color}}</mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Вес</mat-label>
-    <input type="text" matInput formControlName="weightAnimal">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Дата рождения</mat-label>
-    <input type="text" matInput formControlName="age">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>№ чипа</mat-label>
-    <input type="text" matInput formControlName="chipNumber">
-  </mat-form-field>
-  <mat-form-field>
+  <mat-card class="block">
+    <mat-form-field>
+      <mat-label>Кличка питомца</mat-label>
+      <input formControlName="name" type="text" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input formControlName="kindOfAnimal"
+             [matAutocomplete]="kindOfAnimal"
+             matInput
+             placeholder="Вид"
+             type="text">
+      <mat-autocomplete #kindOfAnimal="matAutocomplete">
+        <mat-option *ngFor="let kind of filteredKindOfAnimal | async" [value]="kind">{{kind}}</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <input [matAutocomplete]="gender" matInput placeholder="Пол" type="text" formControlName="gender">
+      <mat-autocomplete #gender="matAutocomplete">
+        <mat-option *ngFor="let gender of filterGender | async" [value]="gender">{{gender}}</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="addButton">
+      <mat-form-field class="addButton__form">
+        <input [matAutocomplete]="breedsAnimals" placeholder="Порода" type="text" matInput formControlName="breed">
+        <mat-autocomplete #breedsAnimals="matAutocomplete">
+          <mat-option *ngFor="let breed of filterBreeds | async" [value]="breed">{{breed}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button color="primary" mat-icon-button matTooltip="Добавить новую породу" type="button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+  </mat-card>
+  <mat-card class="block">
+    <div class="addButton">
+      <mat-form-field class="addButton__form">
+        <mat-label>Окрас</mat-label>
+        <input [matAutocomplete]="colorAnimal" type="text" matInput formControlName="color">
+        <mat-autocomplete #colorAnimal="matAutocomplete">
+          <mat-option *ngFor="let color of filterColor | async" [value]="color">{{color}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button color="primary" mat-icon-button matTooltip="Добавить новый окрас" type="button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <mat-form-field>
+      <mat-label>Вес кг</mat-label>
+      <input type="number" matInput formControlName="weightAnimal" placeholder="Пример: 12.5 или 0.6">
+    </mat-form-field>
+    <div class="addButton">
+      <mat-form-field class="addButton__form">
+        <mat-label>Дата рождения</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="age">
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button (click)="picker.open()" matTooltip="Открыть календарь" style="margin-left: 15px" type="button">Открыть</button>
+    </div>
+    <mat-form-field>
+      <mat-label>№ чипа</mat-label>
+      <input type="text" matInput formControlName="chipNumber">
+    </mat-form-field>
+  </mat-card>
+
+  <mat-form-field class="width100">
     <mat-label>Примечание</mat-label>
     <textarea type="text" matInput formControlName="description"></textarea>
   </mat-form-field>

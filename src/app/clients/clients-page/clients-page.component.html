@@ -3,23 +3,31 @@
     <nav class="client__btn-group">
       <ul class="client__list">
         <li class="client__element">
-          <button (click)="backForClients()" class="client__btn" color="primary" mat-icon-button>
+          <button (click)="backForClients()" class="client__btn" color="primary" mat-icon-button
+                  matTooltip="Вернуться к списку всех клиентов">
             <mat-icon>undo</mat-icon>
           </button>
         </li>
         <li class="client__element">
-          <button class="client__btn" color="primary" mat-icon-button>
+          <button class="client__btn" color="primary" mat-icon-button matTooltip="Редактировать данные клиента">
             <mat-icon>edit</mat-icon>
           </button>
         </li>
         <li class="client__element">
-          <button (click)="sendMail()" *ngIf="this.client?.email" class="client__btn" color="primary" mat-icon-button>
+          <button (click)="sendMail()" *ngIf="this.client?.email" class="client__btn" color="primary" mat-icon-button
+                  matTooltip="Написать клиенту письмо">
             <mat-icon>mail</mat-icon>
           </button>
         </li>
         <li class="client__element">
-          <button class="client__btn" color="primary" mat-icon-button>
+          <button class="client__btn" color="primary" mat-icon-button matTooltip="Запланировать прием">
             <mat-icon>event_note</mat-icon>
+          </button>
+        </li>
+        <li class="client__element">
+          <button class="pets__btn" color="primary" mat-icon-button matTooltip="Создать карту питомца"
+                  (click)="createPetCard()">
+            <mat-icon>add_circle</mat-icon>
           </button>
         </li>
       </ul>
@@ -29,7 +37,8 @@
   <article class="client__description">
     <mat-form-field appearance="fill" class="client__textarea">
       <mat-label>Дополнительная информация:</mat-label>
-      <textarea #description matInput placeholder="Дополнительная информация">{{this.client?.clientDescription}}</textarea>
+      <textarea #description matInput
+                placeholder="Дополнительная информация">{{this.client?.clientDescription}}</textarea>
     </mat-form-field>
   </article>
 </section>
