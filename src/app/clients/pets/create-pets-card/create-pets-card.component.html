@@ -14,8 +14,11 @@
     <input formControlName="name" type="text" matInput>
   </mat-form-field>
   <mat-form-field appearance="legacy">
-    <input formControlName="kindOfAnimal" [matAutocomplete]="kindOfAnimal"
-           matInput placeholder="Вид" type="text">
+    <input formControlName="kindOfAnimal"
+           [matAutocomplete]="kindOfAnimal"
+           matInput
+           placeholder="Вид"
+           type="text">
     <mat-autocomplete #kindOfAnimal="matAutocomplete">
       <mat-option *ngFor="let kind of filteredKindOfAnimal | async" [value]="kind">{{kind}}</mat-option>
     </mat-autocomplete>
@@ -27,12 +30,17 @@
     </mat-autocomplete>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Порода</mat-label>
-    <input type="text" matInput formControlName="breed">
+    <input [matAutocomplete]="breedsAnimals" placeholder="Порода" type="text" matInput formControlName="breed">
+    <mat-autocomplete #breedsAnimals="matAutocomplete">
+      <mat-option *ngFor="let breed of filterBreeds | async" [value]="breed">{{breed}}</mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Окрас</mat-label>
-    <input type="text" matInput formControlName="color">
+    <input [matAutocomplete]="colorAnimal" type="text" matInput formControlName="color">
+    <mat-autocomplete #colorAnimal="matAutocomplete">
+      <mat-option *ngFor="let color of filterColor | async" [value]="color">{{color}}</mat-option>
+    </mat-autocomplete>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Вес</mat-label>

@@ -5,7 +5,7 @@ import { IClients } from '../interface/clients';
 import { fromEvent, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientSendMailComponent } from '../client-send-mail/client-send-mail.component';
-import { debounceTime, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { ClientSaveIdService } from '../services/client-save-id.service';
 
 @Component({
