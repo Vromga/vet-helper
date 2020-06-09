@@ -1,1 +1,74 @@
-<p>pet-medical-card works!</p>
+<section>
+  <header>
+    <nav class="navigation">
+      <ul class="navigation__list">
+        <li class="navigation__elem">
+          <button mat-icon-button color="primary" matTooltip="Вернуться к списку животных"><mat-icon>undo</mat-icon></button>
+        </li>
+        <li class="navigation__elem">
+          <button mat-icon-button color="primary" matTooltip="Сохранить"><mat-icon>save</mat-icon></button>
+        </li>
+        <li class="navigation__elem">
+          <button mat-icon-button color="primary" matTooltip="Распечатать"><mat-icon>print</mat-icon></button>
+        </li>
+        <li class="navigation__elem">
+          <button mat-icon-button color="primary" matTooltip="Создать счет"><mat-icon>local_atm</mat-icon></button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="wrap-medical-card">
+    <mat-card class="info-block">
+      <div class="wrap">
+        <mat-form-field>
+          <input matInput [matDatepicker]="myDatepicker" autocomplete="on">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="time" autocomplete="on">
+        </mat-form-field>
+      </div>
+      <div class="wrap">
+        <mat-form-field>
+          <mat-label>Вес, кг</mat-label>
+          <input matInput type="number" value="15">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Температура, С<sup>o</sup></mat-label>
+          <input matInput type="number" min="30" max="45" step="0.1" value="38.5">
+        </mat-form-field>
+      </div>
+      <div class="wrap">
+        <mat-form-field>
+          <mat-label>Цель обращения</mat-label>
+          <mat-select>
+            <mat-option>None</mat-option>
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Диагнозы:</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Доктор</mat-label>
+          <mat-select>
+            <mat-option>Ветеринар Ветеринарович</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card>
+    <mat-tab-group class="main-block">
+      <mat-tab label="Описание лечения">
+
+      </mat-tab>
+      <mat-tab label="Рекомендации и назначение">Рекомендации и назначение</mat-tab>
+      <mat-tab label="Вакцинация">Вакцинация</mat-tab>
+      <mat-tab label="История">История</mat-tab>
+    </mat-tab-group>
+  </div>
+</section>
+

@@ -1,0 +1,34 @@
+.navigation {
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__elem {
+
+  }
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  margin-right: 10px;
+}
+
+.wrap-medical-card {
+  display: flex;
+}
+
+.main-block{
+  width: 100%;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}

@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ClientSaveIdService } from '../../services/client-save-id.service';
 import { Observable } from 'rxjs';
-import { filter, map, startWith } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, startWith } from 'rxjs/operators';
 import { AutocompletePetService } from '../pet.services/autocompletePet/autocomplete-pet.service';
 import { PetService } from '../../services/pet.service';
+import { SubSink } from 'subsink';
 
 
 interface IForm {
@@ -26,6 +27,7 @@ interface IForm {
   styleUrls: ['./create-pets-card.component.scss']
 })
 export class CreatePetsCardComponent implements OnInit, AfterViewChecked {
+  private subs = new SubSink();
   public form: FormGroup;
   public kindOfAnimalOptions: string[] = ['Собаки', 'Кошки', 'Птицы', 'Рептилии', 'Грызуны', 'Сельскохозяйственные'];
   public genderOptions: string[] = ['Мужской', 'Женский', 'Кастрированный', 'Стерелизованный', 'Не известно'];
