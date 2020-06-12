@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IClients } from '../interface/clients';
+import { IClients } from '../interface/clients.interface';
 
 @Component({
   selector: 'app-client-card',

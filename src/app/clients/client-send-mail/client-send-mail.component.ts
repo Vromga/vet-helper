@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IEmailSend } from '../interface/IEmailSend';
+import { IEmailSend } from '../interface/emailSend.interface';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({

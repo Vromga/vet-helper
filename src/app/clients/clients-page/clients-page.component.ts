@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
-import { IClients } from '../interface/clients';
+import { IClients } from '../interface/clients.interface';
 import { fromEvent, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientSendMailComponent } from '../client-send-mail/client-send-mail.component';

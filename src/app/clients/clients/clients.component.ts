@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
-import { IClients } from '../interface/clients';
+import { IClients } from '../interface/clients.interface';
 import { Subscription } from 'rxjs';
 import { ClientSaveIdService } from '../services/client-save-id.service';
 

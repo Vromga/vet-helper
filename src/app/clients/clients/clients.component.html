@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input (keyup)="applyFilter($event.target)" matInput placeholder="filter" type="text">
+  <input (keyup)="applyFilter($event.target)" matInput placeholder="Поиск..." type="text">
 </mat-form-field>
 <button (click)="addClient()" mat-icon-button matTooltip="добавить клиента">
   <mat-icon>add</mat-icon>
@@ -25,7 +25,8 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row (click)="openPersonalCard(row._id)" *matRowDef="let row; columns: displayedColumns" class="hover"></mat-row>
+    <mat-row (click)="openPersonalCard(row._id)" *matRowDef="let row; columns: displayedColumns"
+             class="hover"></mat-row>
   </mat-table>
   <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
 </div>

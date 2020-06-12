@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ClientSaveIdService } from '../../services/client-save-id.service';
@@ -7,27 +7,16 @@ import { distinctUntilChanged, filter, map, pluck, startWith } from 'rxjs/operat
 import { AutocompletePetService } from '../pet.services/autocompletePet/autocomplete-pet.service';
 import { PetService } from '../../services/pet.service';
 import { SubSink } from 'subsink';
-
-
-interface IForm {
-  name: string;
-  age: string;
-  kindOfAnimal: string;
-  breed: string;
-  color: string;
-  chipNumber: string;
-  gender: string;
-  weightAnimal: string;
-  description: string;
-}
+import { IFormCreateAnimals } from '../../interface/formCreateAnimals.interface';
 
 @Component({
   selector: 'app-create-pets-card',
   templateUrl: './create-pets-card.component.html',
   styleUrls: ['./create-pets-card.component.scss']
 })
-export class CreatePetsCardComponent implements OnInit, AfterViewChecked {
+export class CreatePetsCardComponent implements OnInit {
   private subs = new SubSink();
+  private clientID: string;
   public form: FormGroup;
   public kindOfAnimalOptions: string[] = ['Собаки', 'Кошки', 'Птицы', 'Рептилии', 'Грызуны', 'Сельскохозяйственные'];
   public genderOptions: string[] = ['Мужской', 'Женский', 'Кастрированный', 'Стерелизованный', 'Не известно'];
@@ -42,13 +31,13 @@ export class CreatePetsCardComponent implements OnInit, AfterViewChecked {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public clientSaveId: ClientSaveIdService,
     public ac: AutocompletePetService,
     private petService: PetService
   ) {
   }
 
   ngOnInit(): void {
+    this.route.parent.params.subscribe(value => this.clientID = value.id);
     this.form = new FormGroup({
       name: new FormControl(''),
       age: new FormControl(''),
@@ -91,42 +80,38 @@ export class CreatePetsCardComponent implements OnInit, AfterViewChecked {
         distinctUntilChanged(),
         filter((value: string) => value !== '')
       ).subscribe((val: string) => {
-        console.log(val)
       this.ac.getOptionsForAutocomplete(val);
     });
 
   }
 
-  ngAfterViewChecked() {
-  }
-
-  private _filterKindOfAnimal(val: IForm): string[] {
+  private _filterKindOfAnimal(val: IFormCreateAnimals): string[] {
     const fv = val.kindOfAnimal?.toLowerCase();
     return this.kindOfAnimalOptions.filter(option => option.toLowerCase().includes(fv));
   }
 
-  private _filterGender(val: IForm): string[] {
+  private _filterGender(val: IFormCreateAnimals): string[] {
     const fv = val.gender?.toLowerCase();
     return this.genderOptions.filter(o => o.toLowerCase().includes(fv));
   }
 
-  private _filterBreed(val: IForm): string[] {
+  private _filterBreed(val: IFormCreateAnimals): string[] {
     const fv = val.breed?.toLowerCase();
     return this.ac.breeds?.filter(o => o.toLowerCase().includes(fv));
   }
 
-  private _filterColor(val: IForm): string[] {
+  private _filterColor(val: IFormCreateAnimals): string[] {
     const fv = val.color?.toLowerCase();
     return this.colorOptions.filter(o => o.toLowerCase().includes(fv));
   }
 
   public chancelCreatePet(): void {
-    this.router.navigate([`clients/${this.clientSaveId.clientId}`]);
+    this.router.navigate([`clients/${this.clientID}`]);
   }
 
   public save(): void {
     const reqBody = this.form.value;
-    reqBody.clientId = this.clientSaveId.clientId;
+    reqBody.clientId = this.clientID;
     this.petService.addPet(reqBody);
     this.chancelCreatePet();
   }
