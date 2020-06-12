@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { ITherapyText } from '../../interface/therapyText';
 
 @Component({
   selector: 'app-pet-medical-card',
@@ -7,16 +8,21 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./pet-medical-card.component.scss']
 })
 export class PetMedicalCardComponent implements OnInit {
-  therapyEditor: FormControl;
-  text: string = '<em>hello</em>';
-  constructor() { }
+  public therapyEditor: FormControl;
+  public recommendationEditor: FormControl;
 
-  ngOnInit(): void {
-   this.therapyEditor = new FormControl();
-   this.therapyEditor.valueChanges.subscribe(value => console.log(value));
+  constructor() {
   }
 
-  getTherapyText() {
-   this.text = this.therapyEditor.value
+  ngOnInit(): void {
+    this.therapyEditor = new FormControl();
+    this.recommendationEditor = new FormControl();
+  }
+
+  getTherapyText(): ITherapyText {
+    return {
+      therapy: this.therapyEditor.value,
+      recommendation: this.recommendationEditor.value
+    };
   }
 }
