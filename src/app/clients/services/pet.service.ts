@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IPetInterface } from '../interface/pet.interface';
 import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PetService {
   }
 
   getAllPets(id: string): Observable<IPetInterface[]> {
-    return this.http.get<IPetInterface[]>(`http://localhost:8000/pets/${id}`);
+    return this.http.get<IPetInterface[]>(`http://localhost:8000/pets/${id}`).pipe(share());
   }
 
   addPet(body): void {

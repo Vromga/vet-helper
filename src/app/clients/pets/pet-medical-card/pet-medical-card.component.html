@@ -40,7 +40,7 @@
       <div class="wrap">
         <mat-form-field>
           <mat-label>Вес, кг</mat-label>
-          <input matInput type="number" value="15">
+          <input matInput type="number" [value]="this.pet?.weightAnimal">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Температура, С<sup>o</sup></mat-label>
