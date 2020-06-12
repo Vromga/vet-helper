@@ -14,6 +14,7 @@ import { ClientPetsComponent } from './pets/client-pets/client-pets.component';
 import { PetsCardComponent } from './pets/pets-card/pets-card.component';
 import { CreatePetsCardComponent } from './pets/create-pets-card/create-pets-card.component';
 import { PetMedicalCardComponent } from './pets/pet-medical-card/pet-medical-card.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent, ClientSendMailComponent, ClientPetsComponent, PetsCardComponent, CreatePetsCardComponent, PetMedicalCardComponent],
@@ -27,7 +28,8 @@ import { PetMedicalCardComponent } from './pets/pet-medical-card/pet-medical-car
     ShareModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    QuillModule
   ]
 })
 export class ClientsModule {

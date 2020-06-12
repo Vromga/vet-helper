@@ -3,16 +3,24 @@
     <nav class="navigation">
       <ul class="navigation__list">
         <li class="navigation__elem">
-          <button mat-icon-button color="primary" matTooltip="Вернуться к списку животных"><mat-icon>undo</mat-icon></button>
+          <button mat-icon-button color="primary" matTooltip="Вернуться к списку животных">
+            <mat-icon>undo</mat-icon>
+          </button>
         </li>
         <li class="navigation__elem">
-          <button mat-icon-button color="primary" matTooltip="Сохранить"><mat-icon>save</mat-icon></button>
+          <button mat-icon-button color="primary" matTooltip="Сохранить" (click)="getTherapyText()">
+            <mat-icon>save</mat-icon>
+          </button>
         </li>
         <li class="navigation__elem">
-          <button mat-icon-button color="primary" matTooltip="Распечатать"><mat-icon>print</mat-icon></button>
+          <button mat-icon-button color="primary" matTooltip="Распечатать">
+            <mat-icon>print</mat-icon>
+          </button>
         </li>
         <li class="navigation__elem">
-          <button mat-icon-button color="primary" matTooltip="Создать счет"><mat-icon>local_atm</mat-icon></button>
+          <button mat-icon-button color="primary" matTooltip="Создать счет">
+            <mat-icon>local_atm</mat-icon>
+          </button>
         </li>
       </ul>
     </nav>
@@ -61,9 +69,11 @@
         </mat-form-field>
       </div>
     </mat-card>
-    <mat-tab-group class="main-block">
-      <mat-tab label="Описание лечения">
-
+    <mat-tab-group class="main-block" dynamicHeight>
+      <mat-tab label="Описание лечения" style="height: 50vh">
+        <mat-card>
+          <quill-editor [formControl]="therapyEditor"></quill-editor>
+        </mat-card>
       </mat-tab>
       <mat-tab label="Рекомендации и назначение">Рекомендации и назначение</mat-tab>
       <mat-tab label="Вакцинация">Вакцинация</mat-tab>
@@ -71,4 +81,6 @@
     </mat-tab-group>
   </div>
 </section>
+
+<div>{{text}}</div>
 

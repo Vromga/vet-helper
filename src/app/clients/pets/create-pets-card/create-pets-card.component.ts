@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ClientSaveIdService } from '../../services/client-save-id.service';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, startWith } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, pluck, startWith } from 'rxjs/operators';
 import { AutocompletePetService } from '../pet.services/autocompletePet/autocomplete-pet.service';
 import { PetService } from '../../services/pet.service';
 import { SubSink } from 'subsink';
@@ -87,8 +87,13 @@ export class CreatePetsCardComponent implements OnInit, AfterViewChecked {
 
     this.form.valueChanges
       .pipe(
-        filter((value: IForm) => value.kindOfAnimal !== '')
-      ).subscribe((val: IForm) => this.ac.getOptionsForAutocomplete(val.kindOfAnimal));
+        pluck('kindOfAnimal'),
+        distinctUntilChanged(),
+        filter((value: string) => value !== '')
+      ).subscribe((val: string) => {
+        console.log(val)
+      this.ac.getOptionsForAutocomplete(val);
+    });
 
   }
 
