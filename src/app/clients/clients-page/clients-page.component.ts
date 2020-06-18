@@ -6,7 +6,7 @@ import { fromEvent, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ClientSendMailComponent } from '../client-send-mail/client-send-mail.component';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { ClientSaveIdService } from '../services/client-save-id.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-clients-page',
@@ -14,37 +14,40 @@ import { ClientSaveIdService } from '../services/client-save-id.service';
   styleUrls: ['./clients-page.component.scss']
 })
 export class ClientsPageComponent implements OnInit, OnDestroy {
+  private clientID: string;
   public client: IClients;
   public clientInBlackList = false;
   @ViewChild('description', { static: true }) public description: ElementRef;
-  private subscriptions: Subscription;
-  private subscriptionsEvent: Subscription;
+  // private subscriptions: Subscription;
+  // private subscriptionsEvent: Subscription;
+  private sub = new SubSink();
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              public clientService: ClientService,
-              private clientSaveIdService: ClientSaveIdService,
-              public dialog: MatDialog) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public clientService: ClientService,
+    public dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
-    this.subscriptions = this.clientService.getAllClients().subscribe((clients: IClients[]) => {
+    this.sub.add(this.clientService.getAllClients().subscribe((clients: IClients[]) => {
       this.route.params.subscribe((params: Params) => {
         this.client = clients.find((client: IClients) => client._id === params.id);
         if (this.client.clientInBlackList.toString() === 'true') {
           this.clientInBlackList = true;
         }
       });
-    });
-
-    this.subscriptionsEvent = fromEvent(this.description.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(1000),
-        map((event: KeyboardEvent) => event.target)
-      )
-      .subscribe((value: HTMLInputElement) => {
-        this.clientService.patch(this.clientSaveIdService.clientId, value.value);
-      });
+    }));
+    this.sub.add(this.route.params.subscribe(id => this.clientID = id.id));
+    // this.subscriptionsEvent = fromEvent(this.description.nativeElement, 'keyup')
+    //   .pipe(
+    //     debounceTime(1000),
+    //     map((event: KeyboardEvent) => event.target)
+    //   )
+    //   .subscribe((value: HTMLInputElement) => {
+    //     this.clientService.patch(this.clientSaveIdService.clientId, value.value);
+    //   });
   }
 
   backForClients() {
@@ -52,8 +55,7 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
-    this.subscriptionsEvent.unsubscribe();
+    this.sub.unsubscribe();
   }
 
   sendMail() {
@@ -71,6 +73,6 @@ export class ClientsPageComponent implements OnInit, OnDestroy {
   }
 
   createPetCard() {
-    this.router.navigate([`clients/${this.clientSaveIdService.clientId}`, 'create-pets']);
+    this.router.navigate([`clients/${this.clientID}`, 'create-pets']);
   }
 }

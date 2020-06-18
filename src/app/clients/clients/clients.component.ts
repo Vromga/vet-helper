@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
 import { IClients } from '../interface/clients.interface';
 import { Subscription } from 'rxjs';
-import { ClientSaveIdService } from '../services/client-save-id.service';
 
 @Component({
   selector: 'app-clients',
@@ -22,7 +21,7 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy {
   clientSubscribe: Subscription;
   constructor(private router: Router,
               private clientService: ClientService,
-              private clientSaveId: ClientSaveIdService) {
+             ) {
   }
 
   public ngOnInit(): void {
@@ -47,7 +46,6 @@ export class ClientsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public openPersonalCard(row): void {
-    this.clientSaveId.clientId = row;
     this.router.navigate(['/clients', row]);
   }
 

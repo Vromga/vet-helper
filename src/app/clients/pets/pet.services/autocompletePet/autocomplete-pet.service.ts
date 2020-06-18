@@ -14,7 +14,7 @@ export class AutocompletePetService {
   }
 
   private getAutocomplete(options: string): void {
-    this.http.get(`http://localhost:8000/utilites/${options}`)
+    this.http.get(`http://localhost:8000/breeds/${options}`)
       .pipe(
         map(value => value[0].breed),
         takeUntil(this.unsubscription$)).subscribe(value => this.breeds = value);

@@ -15,9 +15,10 @@ import { PetsCardComponent } from './pets/pets-card/pets-card.component';
 import { CreatePetsCardComponent } from './pets/create-pets-card/create-pets-card.component';
 import { PetMedicalCardComponent } from './pets/pet-medical-card/pet-medical-card.component';
 import { QuillModule } from 'ngx-quill';
+import { AddDiagnosisComponent } from './pets/pet-medical-card/add-diagnosis/add-diagnosis.component';
 
 @NgModule({
-  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent, ClientSendMailComponent, ClientPetsComponent, PetsCardComponent, CreatePetsCardComponent, PetMedicalCardComponent],
+  declarations: [ClientsComponent, CreateClientCardComponent, ClientsPageComponent, ClientCardComponent, ClientSendMailComponent, ClientPetsComponent, PetsCardComponent, CreatePetsCardComponent, PetMedicalCardComponent, AddDiagnosisComponent],
   exports: [
     ClientsComponent
   ],
