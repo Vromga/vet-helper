@@ -60,11 +60,13 @@
         </mat-form-field>
         <div class="label-diagnosis">
           <span>Диагнозы:</span>
-          <button mat-icon-button color="primary">
+          <button mat-icon-button color="primary" (click)="addDiagnosis()">
             <mat-icon>edit</mat-icon>
           </button>
         </div>
-        <div class="diagnosis" contenteditable="true"></div>
+        <div class="diagnosis">
+          <div class="precise_definition">1. Аллергия</div>
+        </div>
         <mat-form-field>
           <mat-label>Доктор</mat-label>
           <mat-select>

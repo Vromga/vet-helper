@@ -6,6 +6,8 @@ import { PetService } from '../../services/pet.service';
 import { pluck } from 'rxjs/operators';
 import { IPetInterface } from '../../interface/pet.interface';
 import { SubSink } from 'subsink';
+import { MatDialog } from '@angular/material/dialog';
+import { AddDiagnosisComponent } from './add-diagnosis/add-diagnosis.component';
 
 @Component({
   selector: 'app-pet-medical-card',
@@ -18,8 +20,9 @@ export class PetMedicalCardComponent implements OnInit, OnDestroy {
   public pet: IPetInterface;
   public therapyEditor: FormControl;
   public recommendationEditor: FormControl;
+  public diacnosis: string[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, public petService: PetService) {
+  constructor(private route: ActivatedRoute, private router: Router, public petService: PetService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -48,8 +51,13 @@ export class PetMedicalCardComponent implements OnInit, OnDestroy {
       .subscribe(console.log);
   }
 
-  backToListAnimals() {
+  public backToListAnimals() {
     this.router.navigate([`clients/${this.clientID}`, 'pets']);
+  }
+
+  public addDiagnosis(): void {
+      const dialogRef = this.dialog.open(AddDiagnosisComponent);
+      dialogRef.afterClosed().subscribe(result => console.log(result));
   }
 
   ngOnDestroy() {

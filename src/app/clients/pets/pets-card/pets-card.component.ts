@@ -2,7 +2,6 @@ import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { PetService } from '../../services/pet.service';
 import { IPetInterface } from '../../interface/pet.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ClientSaveIdService } from '../../services/client-save-id.service';
 import { DateOfBornService } from '../../../share/services/date-of-born.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -29,7 +28,7 @@ export class PetsCardComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngOnInit(): void {
     this.dateNow = new Date().getTime();
-    this.route.parent.params.subscribe((value:IClientID ) => this.clientID = value.id);
+    this.route.parent.params.subscribe((value: IClientID) => this.clientID = value.id);
     this.subscribe = this.petService.getAllPets(this.clientID).subscribe((pets: IPetInterface[]) => {
       this.pets = pets;
     });
