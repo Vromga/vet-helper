@@ -1,0 +1,23 @@
+:host {
+  padding: 0 15px;
+}
+
+table {
+  width: 100%;
+}
+
+mat-sidenav {
+  width: 300px;
+}
+
+.hover {
+  transition: all 0.1s linear;
+  &:nth-child(odd){
+    background-color: #fafafa;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #d6d6d6;
+  }
+}

@@ -1,0 +1,14 @@
+<section class="pets" *ngIf="pets?.length; else noPets">
+  <mat-card class="pets__card" *ngFor="let pet of this.pets" (click)="openCard(this.pet._id)">
+    <mat-card-title>{{pet.name}}</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>дата рождения: {{pet.age | date: 'dd.MM.yyyy'}}</mat-list-item>
+        <mat-list-item>возраст: {{this.howManyYearsLive(pet.age)}} год/лет</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>
+<ng-template #noPets>
+  <section class="pets">Не зарегистрировано ни одного животного!</section>
+</ng-template>

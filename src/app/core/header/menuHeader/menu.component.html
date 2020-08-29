@@ -1,0 +1,26 @@
+<button [mat-menu-trigger-for]="menu" mat-button>Меню</button>
+<mat-menu #menu=matMenu>
+  <button [matMenuTriggerFor]="clients" mat-menu-item  disabled matTooltip="В разработке">Клиенты</button>
+  <button [matMenuTriggerFor]="money" mat-menu-item disabled matTooltip="В разработке">Деньги</button>
+  <button [matMenuTriggerFor]="accounting" mat-menu-item disabled matTooltip="В разработке">Учет</button>
+  <button [matMenuTriggerFor]="employees" mat-menu-item  disabled matTooltip="В разработке">Сотрудники</button>
+</mat-menu>
+
+<mat-menu #clients="matMenu">
+  <button mat-menu-item  disabled matTooltip="В разработке">Управление клиентами</button>
+  <button mat-menu-item  disabled matTooltip="В разработке">Прозвоны</button>
+  <button mat-menu-item  disabled matTooltip="В разработке">Телефония</button>
+</mat-menu>
+<mat-menu #money="matMenu">
+  <button mat-menu-item  disabled matTooltip="В разработке">Счета</button>
+  <button mat-menu-item  disabled matTooltip="В разработке">Кассы</button>
+  <button mat-menu-item  disabled matTooltip="В разработке">Зарплата</button>
+</mat-menu>
+<mat-menu #accounting="matMenu">
+  <button mat-menu-item  disabled matTooltip="В разработке">Товары и услуги</button>
+  <button mat-menu-item  disabled matTooltip="В разработке">Склад</button>
+</mat-menu>
+<mat-menu #employees="matMenu">
+  <button mat-menu-item  disabled matTooltip="В разработке">Календарь</button>
+  <button mat-menu-item  disabled matTooltip="В разработке">Управление сотрудниками</button>
+</mat-menu>

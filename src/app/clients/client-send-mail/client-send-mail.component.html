@@ -1,0 +1,17 @@
+<form (ngSubmit)="sendMail()" [formGroup]="form">
+  <h1 mat-dialog-title>Отправить письмо на адрес {{client?.email}}!</h1>
+  <mat-form-field style="width:100%">
+    <mat-label>Тема письма</mat-label>
+    <input formControlName="title" matInput type="text">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill" class="client__textarea" style="width:100%">
+    <mat-label>Содержание</mat-label>
+    <textarea formControlName="bodyMail" matInput></textarea>
+  </mat-form-field>
+  <br>
+  <button color="primary" mat-dialog-close="true" mat-raised-button style="margin-right: 10px;" type="submit">Отправить
+    письмо
+  </button>
+  <button color="primary" mat-dialog-close="false" mat-raised-button type="submit">Отмена</button>
+</form>

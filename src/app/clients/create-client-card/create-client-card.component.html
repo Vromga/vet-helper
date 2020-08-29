@@ -1,0 +1,166 @@
+<section class="create-clients">
+  <h1>Создание нового клиента</h1>
+  <form (ngSubmit)="save()" [formGroup]="form" class="create-form">
+    <button mat-icon-button matTooltip="Сохранить" type="submit">
+      <mat-icon color="primary">save</mat-icon>
+    </button>
+    <button (click)="backForClients()" mat-icon-button matTooltip="Отмена" type="button">
+      <mat-icon color="primary">block</mat-icon>
+    </button>
+    <mat-card class="create-form__card">
+      <mat-card-title>
+        Личная информация:
+      </mat-card-title>
+      <mat-form-field appearance="outline">
+        <mat-label>Фамилия</mat-label>
+        <input formControlName="surname" matInput required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Имя</mat-label>
+        <input formControlName="name" matInput required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Отчество</mat-label>
+        <input formControlName="patronymic" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Паспорт (№, серия)</mat-label>
+        <input formControlName="passportNumber" matInput placeholder="AA 98 65 32">
+      </mat-form-field>
+    </mat-card>
+    <mat-card class="create-form__card">
+      <mat-card-title>Контактная информация:</mat-card-title>
+      <mat-form-field appearance="outline">
+        <mat-label class="caption">Мобильный телефон</mat-label>
+        <input formControlName="mobilePhone" matInput placeholder="+375 29 123 45 78" required type="tel">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label class="caption">Телефон (дом)</mat-label>
+        <input matInput type="tel" formControlName="homePhone">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label class="caption">Телефон (раб.)</mat-label>
+        <input matInput type="tel" formControlName="workPhone">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label class="caption">Электронная почта</mat-label>
+        <input matInput placeholder="example@gmail.com" type="email" formControlName="email">
+      </mat-form-field>
+    </mat-card>
+    <mat-card class="create-form__card">
+      <mat-card-title>
+        Прочее:
+      </mat-card-title>
+      <mat-form-field appearance="outline">
+        <mat-label>Скидка %</mat-label>
+        <input matInput type="number" formControlName="discount">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Номер по журналу</mat-label>
+        <input matInput type="text" formControlName="numberInDocument">
+      </mat-form-field>
+      <div class="wrap-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Тип</mat-label>
+          <mat-select formControlName="typeOrReception">
+            <mat-option *ngFor="let types of this.typeHelp" [value]="types">
+              {{types}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button (click)="addMoreType()" color="primary" mat-icon-button matTooltip="Добавить новый тип вызова"
+                type="button">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <div class="wrap-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Как нашли</mat-label>
+          <mat-select formControlName="howToFindClinic">
+            <mat-option *ngFor="let item of this.listHowToFindClinic" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button (click)="addMoreHowToFindClinic()" color="primary" mat-icon-button
+                matTooltip="Добавить новую строку: как нашли?" type="button">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <mat-checkbox color="primary" labelPosition="before" formControlName="unsubscribe">Отказаться от рассылок</mat-checkbox>
+      <mat-checkbox color="warn" labelPosition="before" style="color: red;" formControlName="clientInBlackList">Клиент в чёрном списке</mat-checkbox>
+    </mat-card>
+    <mat-card class="create-form__card_city">
+
+      <mat-card-title>
+        Адрес:
+      </mat-card-title>
+      <div class="wrap">
+        <mat-form-field appearance="standard" class="w80px">
+          <mat-select [(value)]="selectedCity" formControlName="typeCity">
+            <mat-option value="Город">Город</mat-option>
+            <mat-option value="Деревня">Деревня</mat-option>
+            <mat-option value="ПГТ">ПГТ</mat-option>
+            <mat-option value="Посёлок">Посёлок</mat-option>
+            <mat-option value="Село">Село</mat-option>
+            <mat-option value="Станица">Станица</mat-option>
+            <mat-option value="Хутор">Хутор</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <input [matAutocomplete]="auto" matInput placeholder="Название нас. пункта" type="text" formControlName="cityName">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <button color="primary" mat-icon-button matTooltip="Добавить новый город" type="button">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <div class="wrap">
+        <mat-form-field appearance="standard" class="w80px">
+          <mat-select [(value)]="selectedStreet" formControlName="typeStreet">
+            <mat-option value="Улица">Улица</mat-option>
+            <mat-option value="Бульвар">Бульвар</mat-option>
+            <mat-option value="Проспект">Проспект</mat-option>
+            <mat-option value="Проезд">Проезд</mat-option>
+            <mat-option value="Переулок">Переулок</mat-option>
+            <mat-option value="Тупик">Тупик</mat-option>
+            <mat-option value="Шоссе">Шоссе</mat-option>
+            <mat-option value="Набережная">Набережная</mat-option>
+            <mat-option value="Площадь">Площадь</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <input [matAutocomplete]="auto" matInput placeholder="Название улицы" type="text" formControlName="streetName">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <button color="primary" mat-icon-button matTooltip="Добавить новую улицу" type="button">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <mat-form-field>
+        <mat-label>Дом / Квартира</mat-label>
+        <input matInput type="text" formControlName="numberHouse">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Индекс</mat-label>
+        <input matInput type="text" formControlName="zipCode">
+      </mat-form-field>
+    </mat-card>
+    <mat-card>
+      <mat-card-title>Дополнительное описание клиента</mat-card-title>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Описание</mat-label>
+        <textarea matInput formControlName="clientDescription"></textarea>
+      </mat-form-field>
+    </mat-card>
+  </form>
+</section>

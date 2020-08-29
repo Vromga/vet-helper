@@ -1,0 +1,34 @@
+<article class="card">
+  <mat-card [ngClass]="{red: this.blackList, green: !this.blackList}" class="card__wrap">
+    <mat-card-title
+      class="card__fio">{{this.client?.surname}} {{this.client?.name}} {{this.client?.patronymic}}</mat-card-title>
+    <div>Телефоны:</div>
+    <mat-list dense="dense">
+      <mat-list-item>
+        <mat-icon mat-list-icon>phone_iphone</mat-icon>
+        <div mat-line>Мобильный телефон:</div>
+        <div mat-line><a class="card__phone"
+                         href="tel:{{this.client?.mobilePhone}}">{{this.client?.mobilePhone}}</a></div>
+      </mat-list-item>
+      <mat-list-item *ngIf="this.client?.homePhone">
+        <mat-icon mat-list-icon>house</mat-icon>
+        <div mat-line>Домашний телефон:</div>
+        <div mat-line><a *ngIf="this.client?.homePhone" class="card__phone"
+                         href="tel:{{this.client?.homePhone}}">{{this.client?.homePhone}}</a></div>
+      </mat-list-item>
+      <mat-list-item *ngIf="this.client?.workPhone">
+        <mat-icon mat-list-icon>apartment</mat-icon>
+        <div mat-line>Рабочий телефон:</div>
+        <div mat-line><a *ngIf="this.client?.workPhone" class="card__phone"
+                         href="tel:{{this.client?.workPhone}}">{{this.client?.workPhone}}</a></div>
+      </mat-list-item>
+    </mat-list>
+    <div class="sub-title">Адрес:</div>
+    <div class="address">{{this.client?.typeCity | abbrCityAndStreet}}
+      {{this.client?.cityName}}
+      {{this.client?.typeStreet | abbrCityAndStreet}}
+      {{this.client?.streetName}}
+      {{this.client?.numberHouse}}</div>
+    <div class="address">Индекс: {{this.client?.zipCode}}</div>
+  </mat-card>
+</article>

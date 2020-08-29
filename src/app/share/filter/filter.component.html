@@ -1,0 +1,81 @@
+<form action="/">
+  <button class="mb" mat-raised-button>Сбросить фильтр</button>
+  <mat-checkbox class="mb" color="warn" value="blackList">В черном списке</mat-checkbox>
+  <mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <mat-select>
+      <mat-option value="active">Активный</mat-option>
+      <mat-option value="temporary">Временный</mat-option>
+      <mat-option value="notActive">Неактивный</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Фамилия</mat-label>
+    <input matInput type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input matInput type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Отчество</mat-label>
+    <input matInput type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Дисконтная карта</mat-label>
+    <input matInput type="text">
+  </mat-form-field>
+  <mat-accordion>
+    <mat-expansion-panel [hideToggle]="false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Дата приёма</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>С</mat-label>
+        <input [matDatepicker]="dateArrivalFrom" matInput>
+        <mat-datepicker-toggle [for]="dateArrivalFrom" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dateArrivalFrom></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>По</mat-label>
+        <input [matDatepicker]="dateArrivalBy" matInput>
+        <mat-datepicker-toggle [for]="dateArrivalBy" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dateArrivalBy></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+    <mat-expansion-panel [hideToggle]="false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Дата счёта</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>С</mat-label>
+        <input [matDatepicker]="dateInvoiceFrom" matInput>
+        <mat-datepicker-toggle [for]="dateInvoiceFrom" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dateInvoiceFrom></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>По</mat-label>
+        <input [matDatepicker]="dateInvoiceBy" matInput>
+        <mat-datepicker-toggle [for]="dateInvoiceBy" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dateInvoiceBy></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+    <mat-expansion-panel [hideToggle]="false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Дата создания медкарты</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>С</mat-label>
+        <input [matDatepicker]="dateCreateFrom" matInput>
+        <mat-datepicker-toggle [for]="dateCreateFrom" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dateCreateFrom></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>По</mat-label>
+        <input [matDatepicker]="dateCreateBy" matInput>
+        <mat-datepicker-toggle [for]="dateCreateBy" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dateCreateBy></mat-datepicker>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>

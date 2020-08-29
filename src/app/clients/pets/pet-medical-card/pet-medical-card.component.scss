@@ -1,0 +1,49 @@
+.navigation {
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__elem {
+
+  }
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  margin-right: 10px;
+}
+
+.wrap-medical-card {
+  display: flex;
+}
+
+.main-block {
+  width: 100%;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.diagnosis {
+  width: 100%;
+  border: 1px solid gray;
+  min-height: 32px;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.label-diagnosis {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(0,0,0,.54);
+}
